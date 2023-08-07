@@ -19,12 +19,21 @@ public class Contato {
     }
 
     @Override
-    public boolean equals(Object contato) {
-        Contato contatoAComparar = (Contato) contato;
-
-        if(contatoAComparar.nome == nome){
-            
+    public boolean equals(Object c) {
+        if (c instanceof Contato contatoAComparar) {
+            if (contatoAComparar.nome.equals(nome)
+                    && contatoAComparar.numero.equals(numero)) {
+                return true;
+            }
         }
+        return false;
+    }
 
+    @Override
+    public String toString() {
+        return "Contato{" +
+                "nome='" + nome + '\'' +
+                ", numero='" + numero + '\'' +
+                '}';
     }
 }

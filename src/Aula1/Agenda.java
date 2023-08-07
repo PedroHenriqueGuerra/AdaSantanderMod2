@@ -1,8 +1,17 @@
 package Aula1;
 
+
 public class Agenda {
 
-    Contato [] contatos;
+    public Contato[] contatos;
+
+    public Agenda() {
+    }
+
+    public Agenda(Contato[] contatos) {
+        this.contatos = contatos;
+    }
+
     public void deletar(Contato contato) {
 
         Contato[] novaLista = new Contato[contatos.length - 1];
@@ -16,8 +25,7 @@ public class Agenda {
             String nomeContatoAtualDoFor = contatos[i].nome;
             String numeroAtualDoFor = contatos[i].numero;
 
-            if (!nomeContatoADeletar.equals(nomeContatoAtualDoFor)
-                    && !numeroADeletar.equals(numeroAtualDoFor)) {
+            if (!contatos[i].equals(contato)) {
 
                 novaLista[posicaoNovaLista] = contatos[i];
                 posicaoNovaLista++;
@@ -38,6 +46,15 @@ public class Agenda {
         return null;
     }
 
+    public void addContato(Contato novoContato) {
+        Contato[] novaLista = new Contato[contatos.length + 1];
+        for (int i = 0; i < contatos.length; i++) {
+            novaLista[i] = contatos[i];
+        }
+        novaLista[novaLista.length-1] = novoContato;
+        contatos = novaLista;
+    }
+
     public void imprimirAgenda() {
         System.out.println();
         for (Contato c : contatos) {
@@ -45,5 +62,6 @@ public class Agenda {
         }
         System.out.println();
     }
+
 
 }
